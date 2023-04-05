@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Network Watcher</title>
+
+     <link rel="stylesheet" href="css/site.css">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+<div class="row">
+    <div class="col text-center">
+        <h1>Total Chapters : {{ total }}</h1>
+    </div>
+</div>
+
+<div class="row">
+<div class="col text-center">
+<ul class="list-group">
+{% for item in items %}
+    <li class="list-group-item">
+     
+       {{ item.file }}<br> {{item.date}}<br>{{item.url}}
+    
+    </li>
+{% endfor %}
+</ul>
+</div>
+</div>
+</div>
+</body>
+</html>

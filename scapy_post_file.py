@@ -2,6 +2,7 @@ from scapy.all import *
 import re
 from datetime import datetime
 import gen_report
+import send_message
 def sniff_http_post(pkt):
     shouldWrite=False
     mFileName=""
@@ -41,5 +42,6 @@ def sniff_http_post(pkt):
                 dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
                 #print("date and time =", dt_string)
                 gen_report.write_html( {"file":[mFileName],"date":[dt_string],"url":[mDest]}) 
+                send_message.send_token_push("Attempt to send File",f"{mFileName} to {mDest} at {dt_string}")
 # Sniff packets on interface "eth0"
 sniff(filter="tcp port 80", prn=sniff_http_post)
